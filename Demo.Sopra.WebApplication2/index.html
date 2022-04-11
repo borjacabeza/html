@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Javascript</title>
+    <link href="vendor/bootstrap-5.1.3/css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Demo Javascript</h1>
+                <hr />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="escribe tu nombre" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido1" class="form-label">Apellido 1</label>
+                        <input type="text" class="form-control" name="apellido1" id="apellido1" placeholder="primer apellido" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="apellido2" class="form-label">Apellido 2</label>
+                        <input type="text" class="form-control" name="apellido2" id="apellido2" />
+                    </div>
+                    <input id="b1" type="button" class="btn btn-warning" value="Botón" />
+                    <input id="b3" type="button" class="btn btn-warning" value="Botón" />
+                    <input type="submit" class="btn btn-success" value="Submit" />
+                    <input type="reset" class="btn btn-primary" value="Reset" />
+                </form>
+                <br />
+                <br />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h1>Nuevos Elementos</h1>
+                <hr />
+                <div id="content" class="col-12" style="border: dotted 1px red; min-height:200px;"></div>
+                <br />
+                <div class="col-12">
+                    <input id="b2" type="button" class="btn btn-info" value="Añadir" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td style="width:10%"><b>Identificador</b></td>
+                        <td style="width:25%"><b>Nombre</b></td>
+                        <td style="width:25%"><b>Apellido</b></td>
+                        <td style="width:30%"><b>Fecha de Nacimiento</b></td>
+                        <td style="width:10%"><b>Curso</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Borja</td>
+                        <td>Cabeza</td>
+                        <td>12/12/2012</td>
+                        <td>3</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="vendor/bootstrap-5.1.3/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        function Demo() {
+            var boton = document.getElementById("b1");
+            boton.value = "Grabar";
+
+            var input1 = document.getElementsByName("nombre");
+            input1[0].value = "Borja";
+
+            var tag1 = document.getElementsByTagName("h1");
+            tag1[0].innerHTML = "Demo <b style='color:blue;'>Javascript</b>";
+
+            var query1 = document.querySelector("#b1");
+
+            var query2 = document.querySelectorAll(".btn");
+            var query3 = document.querySelectorAll("label");
+            var query4 = document.querySelectorAll("input[type=reset]");
+            var query5 = document.querySelectorAll("input[type=text].form-control");
+
+            query3[0].innerText = "Nombre Completo";
+            query3[1].innerText = "Primer Apellidos";
+            query3[2].innerText = "Segundo Apellidos";
+        }
+        function Demo2() {
+
+            function onClick(e) {
+                // e = undefined, cuando utilizados onclick="onClick()"
+
+                // e = objeto INPUT, cuando utilizados onclick="onClick(this)"
+                //e.value = "Grabar";
+
+                // e = objeto EVENT, cuando utilizados onclick="onClick(event)". La propiedad target contiene el objeto INPUT
+                e.target.value = "Grabar";
+
+                //document.getElementById("b1").value = "Gabar";
+                window.alert("Click !!!");
+            }
+
+            document.getElementById("b1").onclick = function (e) {
+                e.target.value = "Grabar";
+                window.alert("Click !!!");
+            }
+
+            document.getElementById("b1").addEventListener("click", onClick);
+
+            document.getElementById("b1").addEventListener("click", function (e) {
+                e.target.value = "Grabar";
+                window.alert("Click !!!");
+            });
+
+            document.getElementById("b2").onclick = function (e) {
+                //document.getElementById("content").innerHTML = "<p>demostración de un parrafo nuevo</p>";
+                //document.getElementById("content").innerHTML += "<img src='images/playa.jpg' class='img-thumbnail' />";
+
+                var parrafo = document.createElement("p");
+                parrafo.innerHTML = "demostración de un parrafo nuevo";
+                document.getElementById("content").appendChild(parrafo);
+
+                var imagen = document.createElement("img");
+                imagen.src = "images/playa.jpg";
+                imagen.classList.add("img-thumbnail");
+                document.getElementById("content").appendChild(imagen);
+            }
+        }
+        function Demo3() {
+            // ES2015
+            class Alumno2 {
+                nombre = "";
+                apellido = "";
+                curso = 0;
+
+                constructor(nombre, apellido) {
+                    this.nombre = nombre;
+                    this.apellido = apellido
+                }
+
+                nombreCompleto() {
+                    console.log(this.nombre + " " + this.apellido);
+                }
+            }
+
+            class AlumnoEx extends Alumno2 {
+                dni = "";
+                provincia = "";
+
+                nombreCompleto() {
+                    console.log("nueva función nombreCompleto");
+                    super.nombreCompleto();
+                }
+
+                demoNuevaFuncion() { }
+            }
+
+            let miAlumno = new Alumno2("Fernando", "Adan");
+            miAlumno.nombreCompleto();
+
+            let miAlumno2 = new AlumnoEx("José Manuel", "Adan");
+            miAlumno2.nombreCompleto();
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            // Anterior a ES2015
+
+            const Alumno = function (nombre, apellido) {
+                var _privado = "";
+
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.curso = 0;
+                this.nombreCompleto = function () {
+                    console.log(this.nombre + " " + this.apellido);
+                }
+
+                this.getPrivado = function () { return _privado; }
+                this.setPrivado = function (value) { _privado = value; }
+            };
+
+            Alumno.prototype = {
+                tutor: "",
+                saludo: function () {
+                    console.log("Te saludo " + this.nombre);
+                }
+            };
+
+            let alum1 = new Alumno("Borja", "Cabeza");
+            alum1.tutor = "Javier Sánchez";
+            alum1.setPrivado("valor privado");
+            console.log(alum1.getPrivado());
+            alum1.nombreCompleto();
+            alum1.saludo();
+
+            let alum2 = new Alumno("Ana", "Sanz");
+            alum2.nombreCompleto();
+
+            //////////////////////////////////////////////////////////////////////////////////////////////
+
+            let alumno = new Object();
+            alumno.nombre = "Borja";
+            alumno.apellido = "Cabeza";
+            alumno.curso = 10;
+            alumno.NombreCompleto = function () {
+                console.log(this.nombre + " " + this.apellido)
+            }
+
+            let alumno2 = {};
+            alumno2.nombre = "Borja";
+            alumno2.apellido = "Cabeza";
+            alumno2.curso = 10;
+            alumno2.NombreCompleto = function () {
+                console.log(this.nombre + " " + this.apellido)
+            }
+
+            let alumno3 = {
+                nombre: "Borja",
+                apellido: "Cabeza",
+                curso: 10,
+                NombreCompleto: function () {
+                    console.log(this.nombre + " " + this.apellido);
+                }
+            }
+
+            alumno.NombreCompleto();
+            alumno2.NombreCompleto();
+            alumno3.NombreCompleto();
+
+            // SERIALIZAR
+            console.log(alum1);
+
+            //Transforma un Objeto a Texto JSON
+            var json = JSON.stringify(alum1);
+            console.log(json);
+
+            // Transforma un texto JSON a Objeto
+            var obj = JSON.parse(json);
+            console.log(">>>>" + obj.nombre);
+
+            console.log(obj);
+
+        }
+        function Demo4() {
+            // DOM Document Objects Model
+
+            //AJAX  Asynchronous Javascript And XML
+            // xhr.open("GET", "", true, "Usuario", "Contraseña");
+            /*
+                READYSTATE_UNINITIALIZED = 0
+                READYSTATE_LOADING = 1
+                READYSTATE_LOADED = 2
+                READYSTATE_INTERACTIVE = 3
+                READYSTATE_COMPLETE = 4
+             */
+
+            // Creamos la instancia del cliente HTTP
+            var xhr = new XMLHttpRequest();
+
+            // Configuramos el cliente
+            xhr.open("GET", "http://ip-api.com/json/193.146.141.207", false);
+
+            // Iniciamos la comunicación
+            xhr.send();
+
+            // Accedemos a la respuesta
+            console.log("Status: " + xhr.status);
+            console.log("State: " + xhr.readyState);
+            console.log("Response: " + xhr.responseText);
+            console.log("Type Response: " + xhr.responseType);
+
+            // Deserializar el objeto de la respuesta
+            var obj = JSON.parse(xhr.responseText);
+
+            console.log("Pais: " + obj.country);
+            console.log("Code: " + obj.countryCode);
+
+            /////////////////////////////////////////////////////////////////////////////////////////
+
+            // Creamos la instancia del cliente HTTP
+            var xhr = new XMLHttpRequest();
+
+            // Configuramos el cliente
+            xhr.open("GET", "http://ip-api.com/json/193.146.141.207", true);
+
+            // Capturamos el evento OnReadyStateChange
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Accedemos a la respuesta
+                    console.log("Status: " + xhr.status);
+                    console.log("State: " + xhr.readyState);
+                    console.log("Response: " + xhr.responseText);
+                    console.log("Type Response: " + xhr.responseType);
+
+                    // Deserializar el objeto de la respuesta
+                    var obj = JSON.parse(xhr.responseText);
+
+                    console.log("Pais: " + obj.country);
+                    console.log("Code: " + obj.countryCode);
+                } else {
+                    console.log(" > Status: " + xhr.status);
+                    console.log(" > State: " + xhr.readyState);
+                }
+            }
+
+            // Iniciamos la comunicación
+            xhr.send();
+            console.log("Código después  Send Async");
+
+            window.onload = function () {
+                alert("Página cargada");
+                let fecha = new Date();
+
+                console.log(fecha);
+                console.log(fecha.toString());
+                console.log(fecha.toLocaleDateString());
+            }
+
+        }
+
+        window.onload = function (e) {
+            //alert("End Load - JS");
+        };
+
+        $(document).ready(function (e) {
+            //alert("End Load - JQuery");
+            DemoQuery();
+        });
+
+        function DemoQuery() {
+            let bt1 = document.getElementById("b1");
+            let bt2 = document.querySelectorAll("#b1");
+            let bt3 = $("#b1");
+
+            let in1 = document.getElementsByTagName("input");
+            let in2 = document.querySelectorAll("input");
+            let in3 = $("input");
+
+            let labels1 = document.querySelectorAll(".form-label");
+            let labels2 = $(".form-label");
+
+            let dm1 = $("input[type=password]");
+
+            document.getElementById("b1").onclick = function (e) {
+                alert("Click Botón 1");
+            };
+
+            $("#b3").click(function (e) { alert("Click Botón 3"); });
+
+            //for (var i in document.getElementsByTagName("input")) {
+            //    document.getElementsByTagName("input")[i].onclick = function (e) {
+            //        alert("Click Label");
+            //    };
+            //}
+
+            $("label").click(function (e) {
+                //alert("Click Label");
+
+                //e.target.innerHTML = "Click";                
+                //e.target.innerText = "Click";                
+
+                //$(e.target).html("<b>Click</b>");
+                $(e.target).text("Click");
+            });
+
+            $("label").on("click", function (e) {
+                $(e.target).html("<b>Click</b>");
+            });
+
+            document.getElementById("b1").onclick = null;
+
+            $("label").off();
+
+            
+
+            $("#b3").click(function (e) {
+                $("label").eq(1).html("Prueba");
+            });
+        }
+    </script>
+</body>
+</html>
