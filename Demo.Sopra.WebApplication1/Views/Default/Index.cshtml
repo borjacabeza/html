@@ -1,0 +1,18 @@
+@model Alumno
+
+<br />
+<div class="row">
+    <div class="col-12">
+        <h1>Aplicación de Gestión de Northwind</h1>
+        <hr>
+        <p><b>Título:</b> @ViewBag.Title</p>
+        <p><b>Mensaje:</b> @ViewBag.Mensaje</p>
+        <p><b>Número:</b> @ViewBag.Numero</p>
+        <p><b>Secreto:</b> @TempData["Secreto"]</p>
+        <br />
+        @*<p><b>Alumno:</b> @(((Alumno)ViewBag.datos).Nombre) @ViewBag.datos.Apellidos</p> *@
+        <br />
+        <p><b>Alumno:</b> @Model.Nombre @Model.Apellidos</p>
+    </div>
+</div>
+
