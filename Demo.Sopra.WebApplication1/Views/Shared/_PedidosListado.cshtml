@@ -1,0 +1,50 @@
+@model List<Order>
+
+<table id="pedidos" class="table table-striped">
+    <thead>
+        <tr>
+            <th><b>ID</b></th>
+            <th><b>Registrado</b></th>
+            <th><b>Enviado</b></th>
+            <th><b>Empleado</b></th>
+            <th><b>Medio</b></th>
+            <th><b> </b></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> 
+                @item.OrderID                       
+            </td>
+            <td>
+                @item.OrderDate.GetValueOrDefault().ToShortDateString()
+            </td>
+            <td>
+                @(item.ShippedDate == null ? "En preparación" : item.ShippedDate.GetValueOrDefault().ToShortDateString())
+            </td>
+            <td>
+                <b>@item.Employee.EmployeeID</b># @item.Employee.FirstName @item.Employee.LastName
+            </td>
+            <td>
+                @item.ShipViaNavigation.CompanyName
+            </td>
+            <td>
+                <a  class="btn btn-info btn-sm"
+                    data-ajax="true"
+                    data-ajax-method="post"
+                    data-ajax-update="#modalbody"
+                    data-ajax-mode="replace"
+                    data-ajax-begin="App.Page.Orders.Detail.OnBegin()"
+                    data-ajax-success="App.Page.Orders.Detail.OnSuccess()"
+                    data-ajax-failure="App.Page.Orders.Detail.OnFailure()"
+                    data-ajax-complete="App.Page.Orders.Detail.OnComplete()"
+                    asp-controller = "pedidos"
+                    asp-action = "detalles"
+                    asp-route-id ="@item.OrderID">detalle</a>
+            </td>
+        </tr>
+    }                
+    </tbody>
+</table>

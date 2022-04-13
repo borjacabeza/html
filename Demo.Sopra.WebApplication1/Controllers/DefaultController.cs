@@ -22,40 +22,32 @@ namespace Demo.Sopra.WebApplication1.Controllers
 
             return View(alumno);
         }
-
         public IActionResult Demo2()
         {
             ViewData["Title"] = "Default - Demo2";
             return View("Index", new Alumno() { Nombre = "Adrian", Apellidos = "Sánchez", Edad = 24 });            
         }
-
         public IActionResult Demo3()
         {
             ViewData["Title"] = "Default - Demo3";
             return RedirectToAction("Index");            
         }
-
         public IActionResult Demo4()
         {
             return Content("En un lugar de la mancha ...");
         }
-
         public IActionResult Demo5()
         {
             return Json(new Alumno() { Nombre = "Adrian", Apellidos = "Sánchez", Edad = 24 });
         }
-
         public IActionResult Demo6()
         {
             return PartialView("_Header");
         }
-
         public IActionResult Demo7()
         {
             byte[] bytes = System.IO.File.ReadAllBytes("jwt-handbook-v0_14_1.pdf");
-            return File(bytes, "application/octet-stream", "jwt-handbook-v0_14_1.pdf");
+            return File(bytes, "application/octet-stream", "manual-jwt.pdf");
         }
-
-
     }
 }

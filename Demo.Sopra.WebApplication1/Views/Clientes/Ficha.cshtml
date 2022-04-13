@@ -1,0 +1,73 @@
+@model Customer
+
+@section Styles { 
+}
+
+@section Scripts {
+    <script type="text/javascript">        
+        $(document).ready(function() { });      
+    </script>
+}
+
+<br />
+<div class="row">
+    <div class="col">
+        <h1>Ficha de Clientes</h1>
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <h4><b>@Model.CompanyName</b></h4>
+            </div>
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-2 text-right"><b>ID:</b></div>
+                    <div class="col-8">@Model.CustomerID</div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-2 text-right"><b>Empresa:</b></div>
+                    <div class="col-8">@Model.CompanyName</div>
+                </div>            
+                <div class="row mb-2">
+                    <div class="col-2 text-right"><b>Contacto:</b></div>
+                    <div class="col-8">
+                        @Model.ContactName (<span class="text-danger">@Model.ContactTitle</span>)
+                    </div>
+                </div>            
+                <div class="row mb-2">
+                    <div class="col-2 text-right"><b>Dirección:</b></div>
+                    <div class="col-8">
+                        @Model.Address <br />
+                        <small>
+                            @Model.PostalCode @Model.City 
+                            (<span >@Model.Country</span>)
+                        </small>                    
+                    </div>
+                </div>            
+                <div class="row">
+                    <div class="col-2 text-right"><b>Teléfono:</b></div>
+                    <div class="col-8">
+                        <i class="bi bi-telephone"></i> @Model.Phone <br />
+                        <i class="bi bi-printer"></i> @Model.Fax
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col">
+        <a asp-controller="clientes" asp-action="index" class="btn btn-success">volver</a>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col">
+        @await Html.PartialAsync("_PedidosListado", (List<Order>)ViewBag.Pedidos) 
+    </div>
+</div>

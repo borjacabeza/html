@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Demo.Sopra.WebApplication1.Models;
 
 namespace Demo.Sopra.WebApplication1
 {
@@ -25,6 +27,7 @@ namespace Demo.Sopra.WebApplication1
         {
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddDbContext<ModelNorthwind>(options => options.UseSqlServer(Configuration.GetConnectionString("Northwind")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -45,7 +48,7 @@ namespace Demo.Sopra.WebApplication1
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Default}/{action=Index}/{id?}");
+                    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
             });
         }
     }

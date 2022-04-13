@@ -1,0 +1,13 @@
+@model List<Order_Detail>
+
+<table class="table table-striped">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td class="text-right">@item.Quantity</td>
+            <td class="text-right">@item.UnitPrice</td>
+            <td class="text-right">@(item.Quantity * item.UnitPrice)</td>
+        </tr>
+    }
+</table>

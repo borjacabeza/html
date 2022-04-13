@@ -1,0 +1,64 @@
+@model List<Customer>
+
+@section Styles { 
+}
+
+@section Scripts {
+    <script type="text/javascript">        
+        $(document).ready(function() { 
+             App.Page.Customers.List.OnLoad();
+        });      
+    </script>
+}
+
+<br />
+<div class="row">
+    <div class="col">
+        <h1>Listado de Clientes</h1>
+        <br />
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table id="clientes" class="table table-striped">
+            <thead>
+                <tr>
+                    <th><b>ID</b></th>
+                    <th><b>Empresa</b></th>
+                    <th><b>Contacto</b></th>
+                    <th><b>Dirección</b></th>
+                    <th><b>Teléfono</b></th>
+                    <th><b>Fax</b></th>
+                    <th><b> </b></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td> 
+                       @*<a href="/clientes/ficha/@item.CustomerID">@item.CustomerID</a>
+                       <a asp-action="ficha" asp-route-id="@item.CustomerID">@item.CustomerID</a>*@
+                       <a asp-controller="clientes" asp-action="ficha" asp-route-id="@item.CustomerID">@item.CustomerID</a>                       
+                    </td>
+                    <td>@item.CompanyName</td>
+                    <td>
+                        @item.ContactName <br />
+                        <small>@item.ContactTitle</small>
+                    </td>
+                    <td>
+                        @item.Address <br />
+                        <small>
+                            @item.PostalCode @item.City <br />
+                            (@item.Country)
+                        </small>
+                    </td>
+                    <td>@item.Phone</td>
+                    <td>@item.Fax</td>
+                    <td></td>
+                </tr>
+            }                
+            </tbody>
+        </table>
+    </div>
+</div>
