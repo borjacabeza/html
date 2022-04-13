@@ -5,9 +5,13 @@
     {
         <tr>
             <td>@item.Product.ProductName</td>
-            <td class="text-right">@item.Quantity</td>
-            <td class="text-right">@item.UnitPrice</td>
-            <td class="text-right">@(item.Quantity * item.UnitPrice)</td>
+            <td style="text-align: right;">@item.Quantity</td>
+            <td style="text-align: right;">@item.UnitPrice</td>
+            <td style="text-align: right;">@(item.Quantity * item.UnitPrice)</td>
         </tr>
     }
+    <tr>
+        <td colspan="3" style="text-align: right;"><b>Importe Total</b></td>
+        <td style="text-align: right;"><b>@Model.Sum(r => r.Quantity * r.UnitPrice)</b></td>
+    </tr>
 </table>

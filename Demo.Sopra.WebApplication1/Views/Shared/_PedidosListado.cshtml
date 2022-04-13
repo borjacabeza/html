@@ -37,7 +37,7 @@
                     data-ajax-update="#modalbody"
                     data-ajax-mode="replace"
                     data-ajax-begin="App.Page.Orders.Detail.OnBegin()"
-                    data-ajax-success="App.Page.Orders.Detail.OnSuccess()"
+                    data-ajax-success="App.Page.Orders.Detail.OnSuccess('@item.OrderID')"
                     data-ajax-failure="App.Page.Orders.Detail.OnFailure()"
                     data-ajax-complete="App.Page.Orders.Detail.OnComplete()"
                     asp-controller = "pedidos"

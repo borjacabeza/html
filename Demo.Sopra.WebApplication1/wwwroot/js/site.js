@@ -15,6 +15,11 @@
                 OnLoad: function() {
                     App.Core.CreateTable("clientes");
                 }
+            },
+            File: {
+                OnLoad: function() {
+                    App.Core.CreateTable("pedidos");
+                }
             }
         },
         Orders: {
@@ -25,8 +30,8 @@
             },
             Detail: {
                 OnBegin: function() { console.log("OnBegin !!!"); },
-                OnSuccess: function() {
-                    $(".modal-title").html("Detalle del Pedido");
+                OnSuccess: function(id) {
+                    $(".modal-title").html("Detalle del Pedido " + id);
                     $("#b1").html("Cerrar");
                     $("#b2").hide();
                     
