@@ -179,6 +179,19 @@
                 OnFailure: function() { console.log("OnFailure !!!"); },
                 OnComplete: function() { console.log("OnComplete !!!"); },
             }
+        },
+        Products: {
+            List: {
+                OnLoad: function() {
+                    App.Core.CreateTable("productos");   
+                       
+                    $(".text-units").click(function(e){
+                        alert("Stock: " + $(this).data("stock") + "\nPedido: " + $(this).data("order"));
+                    });  
+                    
+                    $('[data-bs-toggle="tooltip"]').tooltip();
+                }
+            }            
         }
     }
 }
