@@ -43,6 +43,16 @@
                     asp-controller = "pedidos"
                     asp-action = "detalles"
                     asp-route-id ="@item.OrderID">detalle</a>
+                
+                <button type="button" 
+                    data-type="detalle"
+                    data-orderid="@item.OrderID"
+                    class="btn btn-info btn-sm btn-detalle">datalle</button>
+
+                <button type="button" 
+                    data-type="detalle2"
+                    data-orderid="@item.OrderID"
+                    class="btn btn-info btn-sm btn-detalle2">datalle</button>                    
             </td>
         </tr>
     }                

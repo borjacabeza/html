@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Demo.Sopra.WebApplication1.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
 
 namespace Demo.Sopra.WebApplication1.Controllers
 {
@@ -32,6 +33,19 @@ namespace Demo.Sopra.WebApplication1.Controllers
                 .ToList();
 
             return PartialView("_PedidosDetalles", lineas);
+        }
+
+        public IActionResult Detalles2(int id)
+        {
+            var lineas = _context.Order_Details
+                .Include(r => r.Product)
+                .Where(r => r.OrderID == id)
+                .ToList();
+
+            var jsonSetting = new JsonSerializerOptions() 
+                { ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve };
+
+            return Json(lineas, jsonSetting);
         }
 
         public PedidosController(ModelNorthwind context)

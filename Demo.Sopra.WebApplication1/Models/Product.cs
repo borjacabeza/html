@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 #nullable disable
 
@@ -25,6 +26,7 @@ namespace Demo.Sopra.WebApplication1.Models
 
         public virtual Category Category { get; set; }
         public virtual Supplier Supplier { get; set; }
+
         public virtual ICollection<Order_Detail> Order_Details { get; set; }
     }
 }
