@@ -6,7 +6,7 @@
 @section Scripts {
     <script type="text/javascript">        
         $(document).ready(function() { 
-            App.Page.Products.File.OnLoad();
+            //App.Page.Products.File.OnLoad();
         });      
     </script>
 }
@@ -19,36 +19,42 @@
         <br />
     </div>
 </div>
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <h4><b>@Model.ProductName</b></h4>
-            </div>
-            <div class="card-body">
-                <form>
+<form asp-controller="productos" asp-action="ficha" asp-route-id="@Model.ProductID" method="post">
+<!-- <form action="/productos/ficha/@Model.ProductID" method="post"> -->
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <h4><b>@Model.ProductName</b></h4>
+                </div>
+                <div class="card-body">
                     <div class="form-group row mb-2">
                         <label asp-for="ProductID" class="col-sm-2 col-form-label"></label>
+                        <!-- <label for="ProductID" class="col-sm-2 col-form-label">ProductID</label> -->
+                        <!-- <label for="ProductID" class="col-sm-2 col-form-label">Referencia</label> -->
                         <div class="col-sm-10">
                             <input type="text" class="form-control" asp-for="ProductID" />
+                            <!-- <input type="text" class="form-control" id="ProductID" name="ProductID" value="3" /> -->
+                            <span asp-validation-for="ProductID" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <label asp-for="ProductName" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" asp-for="ProductName" />
+                            <span asp-validation-for="ProductName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group row mb-2">
                         <label asp-for="SupplierID" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" asp-for="SupplierID" />
+                            <select class="form-control" asp-for="SupplierID" asp-items="ViewBag.Proveedores"></select>
                         </div>
                     </div> 
                     <div class="form-group row mb-2">
                         <label asp-for="CategoryID" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" asp-for="CategoryID" />
+                            <select class="form-control" asp-for="CategoryID" asp-items="ViewBag.Categorias"></select>
                         </div>
                     </div> 
                     <div class="form-group row mb-2">
@@ -60,7 +66,7 @@
                     <div class="form-group row mb-2">
                         <label asp-for="UnitPrice" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" asp-for="UnitPrice" />
+                            <input type="currency" class="form-control" asp-for="UnitPrice" />
                         </div>
                     </div> 
                     <div class="form-group row mb-2">
@@ -87,16 +93,20 @@
                             <input type="text" class="form-control" asp-for="Discontinued" />
                         </div>
                     </div>                                                                                                                                                                                     
-                </form>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-<br />
-<div class="row">
-    <div class="col">
-        <a asp-controller="productos" asp-action="index" class="btn btn-success">volver</a>
+    <br />
+    <div class="row">
+        <div class="col-6">
+            <a asp-controller="productos" asp-action="index" class="btn btn-success">volver</a>
+        </div>
+        <div class="col-6 text-end">
+            <input type="submit" class="btn btn-primary" value="Grabar" />
+        </div>
     </div>
-</div>
+</form>
 <br />
 <br />
