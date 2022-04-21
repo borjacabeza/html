@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Demo.Sopra.WebApplication1.Models;
+
 
 namespace Demo.Sopra.WebApplication1
 {
@@ -28,6 +30,12 @@ namespace Demo.Sopra.WebApplication1
             services.AddControllersWithViews();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddDbContext<ModelNorthwind>(options => options.UseSqlServer(Configuration.GetConnectionString("Northwind")));
+
+            services.AddHttpClient("default", config => {
+                config.BaseAddress = new Uri("https://localhost:3001");
+                config.DefaultRequestHeaders.Add("Accept", "application/json");
+                config.DefaultRequestHeaders.Add("User-Agent", "Northwind App");
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

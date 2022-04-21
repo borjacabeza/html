@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Sopra.WebApplication2"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.Sopra.WebApplication1", "Demo.Sopra.WebApplication1\Demo.Sopra.WebApplication1.csproj", "{D87513F6-1675-423C-8F89-794D0091C3F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Sopra.WebApi1", "Demo.Sopra.WebApi1\Demo.Sopra.WebApi1.csproj", "{2E6A4D23-1498-46AD-A906-4C5800F73028}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Sopra.ConsoleApp1", "Demo.Sopra.ConsoleApp1\Demo.Sopra.ConsoleApp1.csproj", "{9C39816D-48DC-4862-9B23-FD425BE4785E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,14 @@ Global
 		{D87513F6-1675-423C-8F89-794D0091C3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D87513F6-1675-423C-8F89-794D0091C3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D87513F6-1675-423C-8F89-794D0091C3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E6A4D23-1498-46AD-A906-4C5800F73028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E6A4D23-1498-46AD-A906-4C5800F73028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E6A4D23-1498-46AD-A906-4C5800F73028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E6A4D23-1498-46AD-A906-4C5800F73028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C39816D-48DC-4862-9B23-FD425BE4785E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C39816D-48DC-4862-9B23-FD425BE4785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C39816D-48DC-4862-9B23-FD425BE4785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C39816D-48DC-4862-9B23-FD425BE4785E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
